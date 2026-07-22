@@ -1,0 +1,5 @@
+.bitcoin/
+.vscode/
+.DS_Store
+bitcoin-28.0/
+bitcoin-28.0-*-linux-gnu.tar.gz
