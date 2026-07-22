@@ -15,6 +15,7 @@ run_submission() {
   BITCOIN_DATADIR="$DATA_DIR" bash "$SUBMISSION_DIR/$1.sh"
 }
 
+
 assert_hash() {
   local exercise=$1
   local actual=$2
