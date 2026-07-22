@@ -4,5 +4,8 @@
 
 set -euo pipefail
 
-# 1495584032 encoded as a minimally encoded Script number is 20cd2459.
-echo "0420cd2459b1752102e3af28965693b9ce1228f9d468149b831d6a0540b25e8a9900f71372c11fb277ac"
+PUBLIC_KEY="02e3af28965693b9ce1228f9d468149b831d6a0540b25e8a9900f71372c11fb277"
+LOCKTIME_HEX="20cd2459"
+PUBLIC_KEY_HASH=$(printf '%s' "$PUBLIC_KEY" | xxd -r -p | openssl dgst -sha256 -binary | openssl dgst -ripemd160 -binary | xxd -p -c 256)
+
+printf '04%sb17576a914%s88ac\n' "$LOCKTIME_HEX" "$PUBLIC_KEY_HASH"

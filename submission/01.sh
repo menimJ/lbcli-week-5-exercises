@@ -9,7 +9,11 @@ if [[ -n "${BITCOIN_DATADIR:-}" ]]; then
 fi
 
 bitcoin-cli() {
-  command bitcoin-cli "${BITCOIN_ARGS[@]}" "$@"
+  if [[ ${#BITCOIN_ARGS[@]} -gt 0 ]]; then
+    command bitcoin-cli "${BITCOIN_ARGS[@]}" "$@"
+  else
+    command bitcoin-cli "$@"
+  fi
 }
 
 if bitcoin-cli -regtest listwallets | grep -q '"btrustwallet"'; then
